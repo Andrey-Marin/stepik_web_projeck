@@ -1,31 +1,5 @@
-sudo nginx -t - проверяет файл конфигурации на ошибки и выводит их
+sudo nginx -t #проверяет файл конфигурации на ошибки и выводит их
 
-curl http://localhost:9080
+curl -I http://localhost:80/test.file #запрос на сервере на порт 80, вернет код 200
 
-sudo ln -fs /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/
-sudo rm -rf /etc/nginx/sites-enabled/default
-sudo /etc/init.d/nginx restart
 
-В моем случае ошибка была в данной части конфиг-файла. За основу брался дефолтный конфиг по пути
-/etc/nginx/sites-enabled/default (с помощью sudo vim default можно посмотреть и изменить его содержимое в ручную, дописав
-location сюда, но это немного противоречит заданию).
-
-server {
-  listen 80 default_server;
-  listen [::]:80 default_server ipv6only=on;
-  
-  root /usr/share/nginx/html;
-  index index.html index.html;
-
- server_name localhost;
-
-  location ^~ /uploads/ {
-    root	/home/box/web/;
-  }
-  location ~* (\.\w*)$ {
-    root	/home/box/web/public;	
-   }
-  location / {
-  return 404;
-  }
-}
