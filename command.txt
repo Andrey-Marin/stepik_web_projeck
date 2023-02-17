@@ -1,5 +1,9 @@
+sudo etc/init.d/nginx [start, restart, stop] #запуск web-сервера
+
 sudo nginx -t #проверяет файл конфигурации на ошибки и выводит их
 
-curl -I http://localhost:80/test.file #запрос на сервере на порт 80, вернет код 200
+ps -o pid,euser,egroup,comm,args -C nginx #вывод информации о процессах
+
+curl -I http://localhost:80/test.file #запрос c хоста на web-сервере (где запущен nginx, который слушает порт 80), вернет код 200 при наличии файла
 
 

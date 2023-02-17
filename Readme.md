@@ -1,24 +1,30 @@
-# Stepic web project
+# Web проект Stepik
  
    
-For submitting code to github:
+Для публикации кода на github:
 
     git add .
     git commit -m 'test complete'
     git push
     
-To boot into the virtual machine and run initialization:
+Клонирование кода с github куда либо:
 
     git clone https://github.com/Andrey-Marin/stepik_web_projeck.git /home/box/web
     cd web/
     ./init.sh
 
-Prepaire [Dockerfile](./Dockerfile) and [docker-compose.yml](./docker-compose.yml) for doing exirsice in the container with nginx.
+Для отработки кода на локальной машине развернут контейнер с такой же файловой структурой, как и в учебном терминале. [Dockerfile](./Dockerfile) и [docker-compose.yml](./docker-compose.yml).
+
+Создание образа и запуск контейнераЖ
 
     docker-compose build
 
     docker-compose up -d
 
-Restart containers:
+Перезапуск контейнера:
 
     docker-compose restart
+
+Вход в контейнер:
+
+    docker exet -it <name_container> bash
