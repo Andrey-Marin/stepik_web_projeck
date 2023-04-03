@@ -7,3 +7,15 @@ ps -o pid,euser,egroup,comm,args -C nginx #вывод информации о п
 curl -I http://localhost:80/test.file #запрос c хоста на web-сервере (где запущен nginx, который слушает порт 80), вернет код 200 при наличии файла
 
 
+#команды для задания 2.1.11
+
+git clone https://github.com/Andrey-Marin/stepik_web_projeck.git /home/box/web
+
+cd ~/web/
+
+chmod +x init.sh
+./init.sh
+gunicorn -w 2 -c /home/box/web/etc/hello.py hello:app
+gunicorn -w 2 -c /home/box/web/etc/qa.py ask.wsgi:application
+curl -vv 'http://127.0.0.1:8000/login/' # 200
+curl -vv 'http://127.0.0.1:8000/lo/' # 400 

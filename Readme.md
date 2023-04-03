@@ -23,6 +23,11 @@
 
 Для отработки кода на локальной машине развернут контейнер с такой же файловой структурой, как и в учебном терминале. [Dockerfile](./Dockerfile) и [docker-compose.yml](./docker-compose.yml).
 
+Создание нового проекта и приложения django:
+
+    django-admin startproject <name_project>
+    ./manage.py startapp <name_app> 
+
 Создание образа и запуск контейнера:
 
     docker-compose build
